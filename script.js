@@ -1,6 +1,6 @@
 // Function to simulate random choice by computer
 function getComputerChoice() {
-    let computerChoice = Math.floor(Math.random()*2)
+    let computerChoice = Math.floor(Math.random()*3)
     if (computerChoice == 0) {
         return "rock";
     }
