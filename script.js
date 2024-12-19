@@ -11,3 +11,4 @@ function getComputerChoice() {
         return "scissors"
     }
 }
+
