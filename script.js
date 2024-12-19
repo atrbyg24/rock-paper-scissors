@@ -20,16 +20,17 @@ function getHumanChoice() {
         humanChoice = prompt("Invalid choice. Please choose 'rock', 'paper', or 'scissors'")
         humanChoice = humanChoice.toLowerCase();
     }
-    return humanChoice
+    return humanChoice;
 }
+
+
+let humanScore;
+let computerScore;
 
 let humanScore = 0;
 let computerScore = 0;
 
 function playRound(humanChoice,computerChoice) {
-    humanChoice = getHumanChoice();
-    computerChoice = getComputerChoice();
-
     if (humanChoice == computerChoice) {
         console.log("It's a draw. Please choose again.");
         humanChoice = getHumanChoice();
@@ -37,21 +38,27 @@ function playRound(humanChoice,computerChoice) {
         return playRound(humanChoice,computerChoice);
     }
     else if (humanChoice == "rock" && computerChoice == "paper") {
+        computerScore+=1;
         return "You lose! Paper beats rock.";
     }
     else if (humanChoice == "paper" && computerChoice == "scissors") {
+        computerScore+=1;
         return "You lose! Scissors beats paper.";
     }
     else if (humanChoice == "scissors" && computerChoice == "rock") {
+        computerScore+=1;
         return "You lose! Rock beats scissors.";
     }
     else if (humanChoice == "rock" && computerChoice == "scissors") {
+        humanScore+=1;
         return "You win! Rock beats scissors.";
     }
     else if (humanChoice == "paper" && computerChoice == "rock") {
+        humanScore+=1;
         return "You win! Paper beats rock.";
     }
     else {
+        humanScore+=1;
         return "You win! Scissors beats paper.";
     }
 }
