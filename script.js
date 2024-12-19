@@ -24,12 +24,12 @@ function getHumanChoice() {
 }
 
 
-let humanScore;
-let computerScore;
-
+// Global variables to keep track of scores
 let humanScore = 0;
 let computerScore = 0;
 
+
+// Function to play one round of RPS
 function playRound(humanChoice,computerChoice) {
     if (humanChoice == computerChoice) {
         console.log("It's a draw. Please choose again.");
@@ -63,7 +63,25 @@ function playRound(humanChoice,computerChoice) {
     }
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+// Function to play a game of five rounds of RPS
+function playGame() {
+    for (let i = 0; i < 5; i++) {
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+        playRound(humanSelection, computerSelection);
+    }
+    console.log(`Score - Player: ${humanScore}, Computer: ${computerScore}`)
 
-playRound(humanSelection, computerSelection);
+    if (humanScore > computerScore) {
+        humanScore = 0
+        computerScore = 0
+        return "Congrats, you win!";
+    }
+    else {
+        humanScore = 0
+        computerScore = 0
+        return "Sorry, you lose."
+    }
+}
+
+playGame();
