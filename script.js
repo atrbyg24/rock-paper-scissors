@@ -83,5 +83,3 @@ function playGame() {
         return "Sorry, you lose."
     }
 }
-
-playGame();
