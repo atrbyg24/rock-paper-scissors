@@ -12,6 +12,7 @@ function getComputerChoice() {
     }
 }
 
+/*
 // Function which prompts user for choice. Continues to prompt until valid answer received
 function getHumanChoice() {
     let humanChoice = prompt("Choose between 'rock','paper' or 'scissors'")
@@ -22,12 +23,16 @@ function getHumanChoice() {
     }
     return humanChoice;
 }
-
+*/
 
 // Global variables to keep track of scores
 let humanScore = 0;
 let computerScore = 0;
 
+window.onload = () => {
+    document.querySelector("#humanScore").textContent = humanScore;
+    document.querySelector("#computerScore").textContent = computerScore;
+}
 
 // Function to play one round of RPS
 function playRound(humanChoice,computerChoice) {
