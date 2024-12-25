@@ -28,6 +28,7 @@ function getHumanChoice() {
 // Global variables to keep track of scores
 let humanScore = 0;
 let computerScore = 0;
+let humanSelection = '';
 
 window.onload = () => {
     document.querySelector("#humanScore").textContent = humanScore;
@@ -37,37 +38,71 @@ window.onload = () => {
 // Function to play one round of RPS
 function playRound(humanChoice,computerChoice) {
     if (humanChoice == computerChoice) {
-        console.log("It's a draw. Please choose again.");
-        humanChoice = getHumanChoice();
-        computerChoice = getComputerChoice();
-        return playRound(humanChoice,computerChoice);
+        alert("It's a draw. Please choose again.");
+         //humanChoice = getHumanChoice();
+        //computerChoice = getComputerChoice();
+        //return playRound(humanChoice,computerChoice);
     }
     else if (humanChoice == "rock" && computerChoice == "paper") {
         computerScore+=1;
+        document.querySelector("#computerScore").textContent = computerScore;
         return "You lose! Paper beats rock.";
     }
     else if (humanChoice == "paper" && computerChoice == "scissors") {
         computerScore+=1;
+        document.querySelector("#computerScore").textContent = computerScore;
         return "You lose! Scissors beats paper.";
     }
     else if (humanChoice == "scissors" && computerChoice == "rock") {
         computerScore+=1;
+        document.querySelector("#computerScore").textContent = computerScore;
         return "You lose! Rock beats scissors.";
     }
     else if (humanChoice == "rock" && computerChoice == "scissors") {
         humanScore+=1;
+        document.querySelector("#humanScore").textContent = humanScore;
         return "You win! Rock beats scissors.";
     }
     else if (humanChoice == "paper" && computerChoice == "rock") {
         humanScore+=1;
+        document.querySelector("#humanScore").textContent = humanScore;
         return "You win! Paper beats rock.";
     }
     else {
         humanScore+=1;
+        document.querySelector("#humanScore").textContent = humanScore;
         return "You win! Scissors beats paper.";
     }
 }
 
+let btns = document.querySelector('body');
+
+btns.addEventListener('click', (event) => {
+    let target = event.target;
+    if (target.id == 'rock') {
+        humanSelection = 'rock';
+        console.log('rock');
+    }
+    else if (target.id == 'paper') {
+        humanSelection = 'paper'
+        console.log('paper');
+    }
+    else if (target.id == 'scissors') {
+        humanSelection = 'scissors';
+        console.log('scissors');
+    }
+    else {
+        if (humanSelection == '') {
+            alert('Please choose either rock, paper or scissors before playing');
+        }
+        else {
+            const computerSelection = getComputerChoice();
+            playRound(humanSelection,computerSelection);
+        }
+    }
+});
+
+/*
 // Function to play a game of five rounds of RPS
 function playGame() {
     for (let i = 0; i < 5; i++) {
@@ -87,4 +122,5 @@ function playGame() {
         computerScore = 0
         return "Sorry, you lose."
     }
-}
+}    
+*/
