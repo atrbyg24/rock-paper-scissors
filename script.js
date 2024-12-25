@@ -38,7 +38,7 @@ window.onload = () => {
 // Function to play one round of RPS
 function playRound(humanChoice,computerChoice) {
     if (humanChoice == computerChoice) {
-        alert("It's a draw. Please choose again.");
+        return "It's a draw. Please choose again.";
          //humanChoice = getHumanChoice();
         //computerChoice = getComputerChoice();
         //return playRound(humanChoice,computerChoice);
@@ -46,31 +46,73 @@ function playRound(humanChoice,computerChoice) {
     else if (humanChoice == "rock" && computerChoice == "paper") {
         computerScore+=1;
         document.querySelector("#computerScore").textContent = computerScore;
+        if (computerScore == 5) {
+            alert("You lost the match! First to five wins.");
+            humanScore = 0;
+            computerScore = 0;
+            document.querySelector("#humanScore").textContent = humanScore;
+            document.querySelector("#computerScore").textContent = computerScore;
+        }
         return "You lose! Paper beats rock.";
     }
     else if (humanChoice == "paper" && computerChoice == "scissors") {
         computerScore+=1;
         document.querySelector("#computerScore").textContent = computerScore;
+        if (computerScore == 5) {
+            alert("You lost the match! First to five wins.");
+            humanScore = 0;
+            computerScore = 0;
+            document.querySelector("#humanScore").textContent = humanScore;
+            document.querySelector("#computerScore").textContent = computerScore;
+        }
         return "You lose! Scissors beats paper.";
     }
     else if (humanChoice == "scissors" && computerChoice == "rock") {
         computerScore+=1;
         document.querySelector("#computerScore").textContent = computerScore;
+        if (computerScore == 5) {
+            alert("You lost the match! First to five wins.");
+            humanScore = 0;
+            computerScore = 0;
+            document.querySelector("#humanScore").textContent = humanScore;
+            document.querySelector("#computerScore").textContent = computerScore;
+        }
         return "You lose! Rock beats scissors.";
     }
     else if (humanChoice == "rock" && computerChoice == "scissors") {
         humanScore+=1;
         document.querySelector("#humanScore").textContent = humanScore;
+        if (humanScore == 5) {
+            alert("You won the match! First to five wins.");
+            humanScore = 0;
+            computerScore = 0;
+            document.querySelector("#humanScore").textContent = humanScore;
+            document.querySelector("#computerScore").textContent = computerScore;
+        }
         return "You win! Rock beats scissors.";
     }
     else if (humanChoice == "paper" && computerChoice == "rock") {
         humanScore+=1;
         document.querySelector("#humanScore").textContent = humanScore;
+        if (humanScore == 5) {
+            alert("You won the match! First to five wins.");
+            humanScore = 0;
+            computerScore = 0;
+            document.querySelector("#humanScore").textContent = humanScore;
+            document.querySelector("#computerScore").textContent = computerScore;
+        }
         return "You win! Paper beats rock.";
     }
     else {
         humanScore+=1;
         document.querySelector("#humanScore").textContent = humanScore;
+        if (humanScore == 5) {
+            alert("You won the match! First to five wins.");
+            humanScore = 0;
+            computerScore = 0;
+            document.querySelector("#humanScore").textContent = humanScore;
+            document.querySelector("#computerScore").textContent = computerScore;
+        }
         return "You win! Scissors beats paper.";
     }
 }
@@ -97,7 +139,9 @@ btns.addEventListener('click', (event) => {
         }
         else {
             const computerSelection = getComputerChoice();
-            playRound(humanSelection,computerSelection);
+            let result = "";
+            result = playRound(humanSelection,computerSelection);
+            document.querySelector(".result").textContent = result;
         }
     }
 });
